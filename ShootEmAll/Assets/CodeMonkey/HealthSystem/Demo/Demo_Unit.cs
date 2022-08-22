@@ -9,8 +9,8 @@ namespace CodeMonkey.HealthSystemCM {
     /// </summary>
     public class Demo_Unit : MonoBehaviour {
 
-        [SerializeField] private ParticleSystem damageParticleSystem;
-        [SerializeField] private ParticleSystem healParticleSystem;
+        //[SerializeField] private ParticleSystem damageParticleSystem;
+        //[SerializeField] private ParticleSystem healParticleSystem;
 
         private HealthSystem healthSystem;
 
@@ -24,16 +24,16 @@ namespace CodeMonkey.HealthSystemCM {
         }
 
         private void HealthSystem_OnHealed(object sender, System.EventArgs e) {
-            healParticleSystem.Play();
+            //healParticleSystem.Play();
         }
 
         private void HealthSystem_OnDamaged(object sender, System.EventArgs e) {
-            damageParticleSystem.Play();
+            //damageParticleSystem.Play();
         }
 
         private void HealthSystem_OnDead(object sender, System.EventArgs e) {
             transform.eulerAngles = new Vector3(0, 0, -90);
-            damageParticleSystem.Play();
+            //damageParticleSystem.Play();
         }
 
         private void OnMouseDown() {
