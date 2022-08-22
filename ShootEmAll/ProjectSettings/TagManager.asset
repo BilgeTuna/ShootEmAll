@@ -10,6 +10,8 @@ TagManager:
   - Target
   - Enemy
   - Base
+  - Missile
+  - Gun
   layers:
   - Default
   - TransparentFX

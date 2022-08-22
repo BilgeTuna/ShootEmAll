@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Moon : MonoBehaviour
@@ -23,14 +21,6 @@ public class Moon : MonoBehaviour
 
         Orbit();
 
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-        }
     }
 
     private void FirstBtnOnClick()
