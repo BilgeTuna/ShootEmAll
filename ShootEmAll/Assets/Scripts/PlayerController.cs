@@ -1,25 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
-
 using CodeMonkey.HealthSystemCM;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, IGetHealthSystem
 {
+    public static PlayerController playerController;
     private Rigidbody rbody;
-    public float moveForce = 10f;
-
+    private float moveForce = 8f;
     private Joystick joystick;
-
     private Animator anim;
-
-
+    public ParticleSystem particle;
+    public ParticleSystem updateParticle;
     private HealthSystem healthSystem;
-
+    private bool onClicked = false;
+    private float healthMax;
+    public GameObject buttonCanvas;
+    public GameObject healthBarCanvas;
+    public Image barImage;
 
     void Awake()
     {
-        healthSystem = new HealthSystem(100);
+        particle.Stop();
+        updateParticle.Stop();
+        updateParticle.GetComponentInParent<MeshRenderer>().enabled = false;
+        updateParticle.GetComponentInParent<SpawnEffect>().enabled = false;
+        healthMax = 100;
+        healthSystem = new HealthSystem(healthMax);
         healthSystem.OnDead += HealthSystem_OnDead;
 
 
@@ -30,29 +37,61 @@ public class PlayerController : MonoBehaviour, IGetHealthSystem
         //getHealthSystemGameObject = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Start()
+    public void DoubleHealth()
     {
         
+        healthMax = 200;
+        healthSystem.Damage(1f);
+        healthBarCanvas.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1f, 1f);
+        onClicked = true;
+    }
+
+    public void SpeedPlus()
+    {
+        moveForce = 12f;
+        onClicked = true;
+    }
+
+    public void PillCvs()
+    {
+        barImage.GetComponent<Image>().fillAmount = 1;
+        healthSystem.HealComplete();
     }
 
     private void HealthSystem_OnDead(object sender, System.EventArgs e)
     {
-        //Destroy(gameObject);
+        //burası dolacak
+        //gameObject.GetComponent<MeshRenderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("Boy").GetComponent<SkinnedMeshRenderer>().enabled = false;
+        particle.Play();
+        StartCoroutine(delayDeath());
     }
 
-    public void Damage()
-    {
-        healthSystem.Damage(10);
-    }
-
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Damage();
-            Debug.Log("asddsfffg");
+            other.GetComponent<BoxCollider>().isTrigger = true;
+            healthSystem.Damage(2f);
         }
+
+        if (other.gameObject.CompareTag("Pill"))
+        {
+            PillCvs();
+            //updateParticle.GetComponent<SphereCollider>().enabled = true;
+            updateParticle.GetComponentInParent<MeshRenderer>().enabled = true;
+            updateParticle.GetComponentInParent<SpawnEffect>().enabled = true;
+            updateParticle.Play();
+            Destroy(other.gameObject);
+        }
+    }
+
+    IEnumerator delayDeath()
+    {
+        yield return new WaitForSeconds(.8f);
+        //Destroy(gameObject);
+        Time.timeScale = 0;
     }
 
     void Update()
@@ -70,6 +109,11 @@ public class PlayerController : MonoBehaviour, IGetHealthSystem
         else
         {
             anim.SetBool("isMoving", false);
+        }
+
+        if (onClicked == true)
+        {
+            buttonCanvas.SetActive(false);
         }
     }
 

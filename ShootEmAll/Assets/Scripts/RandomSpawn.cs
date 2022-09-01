@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
 {
-    
     public GameObject itemToSpread;
     public int numItemsToSpawn;
-
     public float itemXSpread = 0;
     public float itemYSpread = 0;
     public float itemZSpread = 0;
-
-
     public float maxTime = 5;
     public float minTime = 2;
 
@@ -21,7 +15,6 @@ public class RandomSpawn : MonoBehaviour
 
     //The time to spawn the object
     private float spawnTime;
-
 
     void Start()
     {
@@ -41,7 +34,6 @@ public class RandomSpawn : MonoBehaviour
             SpawnObject();
             SetRandomTime();
         }
-
     }
 
     //Sets the random time between minTime and maxTime
@@ -59,13 +51,9 @@ public class RandomSpawn : MonoBehaviour
         }
     }
 
-
-
-
     void SpreadItem()
     {
-        Vector3 randPosition = new Vector3(Random.Range(-itemXSpread, itemXSpread), Random.Range(-itemYSpread, itemYSpread), Random.Range(-itemZSpread, itemZSpread)) + transform.position;
+        Vector3 randPosition = new Vector3(Random.Range(-itemXSpread, itemXSpread), 1.0f, Random.Range(-itemZSpread, itemZSpread)) + transform.position;
         GameObject clone = Instantiate(itemToSpread, randPosition, Quaternion.identity);
     }
-
 }

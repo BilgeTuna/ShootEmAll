@@ -5,7 +5,6 @@ public class Enemies : MonoBehaviour
 {
     public ParticleSystem particle;
 
-
     //public Transform target;
     public float speed = 5f;
     Rigidbody rig;
@@ -37,11 +36,17 @@ public class Enemies : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Gun"))
+        if (other.CompareTag("Rocket") || other.CompareTag("Ray") || other.CompareTag("Shield"))
         {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.tag = "Untagged";
             particle.Play();
             StartCoroutine(delayDeath());    
+        }
+
+        if (other.CompareTag("Protection"))
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleController : MonoBehaviour
@@ -20,8 +18,6 @@ public class ParticleController : MonoBehaviour
 
     void LateUpdate()
     {
-
         Orbit();
-
     }
 }

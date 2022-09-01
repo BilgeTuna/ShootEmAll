@@ -8,10 +8,10 @@ namespace CodeMonkey.HealthSystemCM {
     public class HealthSystemComponent : MonoBehaviour, IGetHealthSystem {
 
         [Tooltip("Maximum Health amount")]
-        [SerializeField] private float healthAmountMax = 100f;
+         public float healthAmountMax = 100f;
 
         [Tooltip("Starting Health amount, leave at 0 to start at full health.")]
-        [SerializeField] private float startingHealthAmount;
+         private float startingHealthAmount;
 
         private HealthSystem healthSystem;
 

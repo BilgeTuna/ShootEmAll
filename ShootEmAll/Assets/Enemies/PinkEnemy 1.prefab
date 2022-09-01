@@ -9700,7 +9700,7 @@ GameObject:
   - component: {fileID: 7617498757690649161}
   - component: {fileID: 7617498757690649162}
   - component: {fileID: 7617498757690649140}
-  - component: {fileID: -6564505707497933}
+  - component: {fileID: 3106414015189357609}
   m_Layer: 0
   m_Name: PinkEnemy 1
   m_TagString: Enemy
@@ -9787,13 +9787,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7311491823641564614}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &7617498757690649161
 BoxCollider:
@@ -9803,7 +9803,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7311491823641564614}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6012142, y: 0.54356694, z: 0.5164921}
@@ -9842,7 +9842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 196983262865269688}
   speed: 5
---- !u!65 &-6564505707497933
+--- !u!65 &3106414015189357609
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9850,7 +9850,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7311491823641564614}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6012142, y: 0.54356694, z: 0.5164921}

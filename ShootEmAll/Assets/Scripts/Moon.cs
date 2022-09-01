@@ -4,7 +4,7 @@ public class Moon : MonoBehaviour
 {
     public Transform target;
     public float orbitDistance = 2.0f;
-    public float orbitDegreesPerSec = 0.0f;
+    public float orbitDegreesPerSec;
 
     void Orbit()
     {
@@ -16,16 +16,8 @@ public class Moon : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void Update()
     {
-
         Orbit();
-
-    }
-
-    private void FirstBtnOnClick()
-    {
-        orbitDistance = 3.0f;
-
     }
 }

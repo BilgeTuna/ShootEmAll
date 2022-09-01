@@ -12,6 +12,13 @@ TagManager:
   - Base
   - Missile
   - Gun
+  - Boy
+  - Rocket
+  - Ray
+  - Protection
+  - Pill
+  - Shield
+  - Force
   layers:
   - Default
   - TransparentFX
